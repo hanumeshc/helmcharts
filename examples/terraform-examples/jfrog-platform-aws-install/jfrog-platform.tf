@@ -15,7 +15,7 @@ provider "kubernetes" {
 # Fetch the JFrog Platform Helm chart and untar it to the current directory so we can use the sizing files to create the final values files
 resource "null_resource" "fetch_platform_chart" {
   provisioner "local-exec" {
-    command = "rm -rf xray-*.tgz"
+    command = "rm -rf jfrog-platform-*.tgz"
   }
   provisioner "local-exec" {
     command = "helm fetch jfrog-platform --version ${var.jfrog_platform_chart_version} --repo https://charts.jfrog.io --untar"
@@ -98,7 +98,7 @@ resource "local_file" "jfrog_platform_values" {
         maxCacheSize: "${local.cache-fs-size}000000000"
         awsS3V3:
           region: "${var.region}"
-          bucketName: "artifactory-${var.region}-${var.s3_bucket_name_suffix}"
+          bucketName: "${local.artifactory_s3_bucket_name}"
 
     database:
       url: "jdbc:postgresql://${aws_db_instance.artifactory_db.endpoint}/${var.artifactory_db_name}?sslmode=require"

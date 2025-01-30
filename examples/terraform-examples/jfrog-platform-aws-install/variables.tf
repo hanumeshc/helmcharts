@@ -230,7 +230,7 @@ variable "xray_db_password" {
 }
 
 variable "cluster_name" {
-  default = "jfrog-eks-cluster"
+  default = "jfrog"
 }
 
 variable "namespace" {
