@@ -9,6 +9,9 @@ The resources are split between individual files for easy and clear separation.
 
 
 ## Prepare the JFrog Platform Configurations
+Ensure that the AWS CLI is set up and properly configured before starting with Terraform. 
+A configured AWS account with the necessary permissions is required to provision and manage resources successfully. 
+
 The [jfrog-values.yaml](jfrog-values.yaml) file has the values that Helm will use to configure the JFrog Platform installation.
 
 The [artifactory-license-template.yaml](artifactory-license-template.yaml) file has the license key(s) template that you will need to copy to a `artifactory-license.yaml` file.
